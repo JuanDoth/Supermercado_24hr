@@ -1,12 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Supermercado</h1>
-    <p>Esse é o Supermercado é o supermercado da sua vida seja bem vindo</p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block html %}
+
+<div class="hero">
+    <div class="hero-texto">
+        <h1>Supermercado Boa Vida</h1>
+        <p>Produtos frescos e de qualidade direto para a sua mesa. Faça seu cadastro e compre com facilidade!</p>
+        <div class="hero-links">
+            <a href="/cadastro" class="hero-btn primary">Criar conta</a>
+            <a href="/login" class="hero-btn secondary">Já tenho conta</a>
+        </div>
+    </div>
+    <div class="hero-imagem">🏪</div>
+</div>
+
+<div class="beneficios">
+    <div class="beneficio-card">
+        <div class="beneficio-icone">🚚</div>
+        <h3>Entrega rápida</h3>
+        <p>Receba seus produtos no conforto da sua casa.</p>
+    </div>
+    <div class="beneficio-card">
+        <div class="beneficio-icone">💰</div>
+        <h3>Melhores preços</h3>
+        <p>Ofertas exclusivas para clientes cadastrados.</p>
+    </div>
+    <div class="beneficio-card">
+        <div class="beneficio-icone">✅</div>
+        <h3>Qualidade garantida</h3>
+        <p>Produtos selecionados com muito cuidado.</p>
+    </div>
+</div>
+
+<!-- Botão flutuante -->
+<button class="chat-btn" onclick="abrirChat()">
+    <i class="fa-solid fa-comment"></i>
+</button>
+
+<!-- Janela do chat -->
+<div class="chat-box" id="chatBox">
+    <div class="chat-header">
+        <span>🛒 Assistente Boa Vida</span>
+        <button onclick="fecharChat()">✕</button>
+    </div>
+    <div class="chat-mensagens" id="chatMensagens">
+        <div class="msg-ia">Olá! Posso te ajudar com informações sobre produtos, preços ou fazer um pedido. Como posso te ajudar?</div>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="inputChat" placeholder="Digite sua mensagem..." onkeydown="if(event.key==='Enter') enviarMensagem()">
+        <button onclick="enviarMensagem()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<script>
+function abrirChat() {
+    document.getElementById('chatBox').style.display = 'flex';
+}
+function fecharChat() {
+    document.getElementById('chatBox').style.display = 'none';
+}
+async function enviarMensagem() {
+    const input = document.getElementById('inputChat');
+    const mensagens = document.getElementById('chatMensagens');
+    const texto = input.value.trim();
+    if (!texto) return;
+
+    mensagens.innerHTML += `<div class="msg-usuario">${texto}</div>`;
+    input.value = '';
+    mensagens.innerHTML += `<div class="msg-ia">Digitando...</div>`;
+    mensagens.scrollTop = mensagens.scrollHeight;
+
+    try {
+        const res = await fetch('/chat', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({mensagem: texto})
+        });
+
+        if (!res.ok) {
+            const erro = await res.text();
+            console.log('Erro do servidor:', erro);
+            const msgsErro = mensagens.querySelectorAll('.msg-ia');
+            msgsErro[msgsErro.length - 1].textContent = 'Erro ao conectar com a IA.';
+            return;
+        }
+
+        const data = await res.json();
+        const msgs = mensagens.querySelectorAll('.msg-ia');
+        msgs[msgs.length - 1].remove();
+        mensagens.innerHTML += `<div class="msg-ia">${data.resposta}</div>`;
+        mensagens.scrollTop = mensagens.scrollHeight;
+
+    } catch (e) {
+        console.log('Erro:', e);
+        const msgsErro = mensagens.querySelectorAll('.msg-ia');
+        msgsErro[msgsErro.length - 1].textContent = 'Erro ao conectar com a IA.';
+    }
+}
+</script>
+
+{% endblock %}

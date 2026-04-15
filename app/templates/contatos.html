@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block html %}
+
+<h1>Contatos</h1>
+<h2>Fale com a gente</h2>
+
+<div class="contatos-card">
+    <div class="contato-item">
+        <div class="contato-icone">📧</div>
+        <div>
+            <div class="contato-label">E-mail</div>
+            <div class="contato-valor">{{ email }}</div>
+        </div>
+    </div>
+    <div class="contato-item">
+        <div class="contato-icone">📱</div>
+        <div>
+            <div class="contato-label">Celular</div>
+            <div class="contato-valor">{{ celular }}</div>
+        </div>
+    </div>
+    <div class="contato-item">
+        <div class="contato-icone">📸</div>
+        <div>
+            <div class="contato-label">Instagram</div>
+            <div class="contato-valor">@{{ instagram }}</div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

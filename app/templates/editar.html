@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block html %}
+
+<h1>Editar produto</h1>
+<h2>Altere os dados abaixo</h2>
+
+<div class="form-card">
+    <form action="/atualizar/{{ produto._id }}" method="POST">
+        <div class="form-group" style="margin-bottom: 16px;">
+            <label for="nome">Nome do produto</label>
+            <input type="text" id="nome" name="nome" value="{{ produto.nome }}" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+            <label for="preco">Preço (R$)</label>
+            <input type="number" id="preco" name="preco" value="{{ produto.preco }}" min="0" step="0.01" required>
+        </div>
+        <div style="display: flex; gap: 12px;">
+            <button type="submit" class="btn-adicionar">
+                <i class="fa-solid fa-check"></i> Salvar alterações
+            </button>
+            <a href="/catalogo" class="btn-cancelar">
+                <i class="fa-solid fa-xmark"></i> Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

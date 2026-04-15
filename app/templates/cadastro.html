@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block html %}
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h1>Criar conta</h1>
+        <p>Cadastre-se para começar a comprar.</p>
+
+        <form action="/cadastro" method="POST">
+            <div class="form-group" style="margin-bottom:16px">
+                <label>Nome</label>
+                <input type="text" name="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group" style="margin-bottom:16px">
+                <label>Email</label>
+                <input type="text" name="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="form-group" style="margin-bottom:24px">
+                <label>Senha</label>
+                <input type="password" name="senha" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-adicionar" style="width:100%; justify-content:center;">
+                Criar conta
+            </button>
+        </form>
+
+        <p style="margin-top:20px; text-align:center; font-size:14px;">
+            Já tem conta? <a href="/login" style="color:var(--verde); font-weight:500;">Entrar</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

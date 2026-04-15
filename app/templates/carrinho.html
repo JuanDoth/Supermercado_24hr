@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block html %}
+
+<h1>Carrinho</h1>
+
+{% if itens %}
+<div class="tabela-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Qtd</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in itens %}
+            <tr>
+                <td>{{ item.nome }}</td>
+                <td>R$ {{ "%.2f"|format(item.preco) }}</td>
+                <td>{{ item.qtd }}</td>
+                <td>R$ {{ "%.2f"|format(item.preco * item.qtd) }}</td>
+                <td>
+                    <a href="/remover_carrinho/{{ item.id }}" class="btn-remover-icone">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="carrinho-total">
+    <span>Total: <strong>R$ {{ "%.2f"|format(total) }}</strong></span>
+    <form action="/finalizar_pedido" method="POST">
+        <button type="submit" class="btn-adicionar">
+            <i class="fa-solid fa-check"></i> Finalizar pedido
+        </button>
+    </form>
+</div>
+
+{% else %}
+<div class="tabela-wrapper">
+    <p class="vazio">Seu carrinho está vazio.</p>
+</div>
+{% endif %}
+
+{% endblock %}
