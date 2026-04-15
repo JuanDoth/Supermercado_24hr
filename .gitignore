@@ -1,3 +1,6 @@
+__pycache__/
+*.pyc
+
 ./Projetos_python/
 app/.env
 __pycache__/
