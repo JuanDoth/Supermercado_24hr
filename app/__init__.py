@@ -27,10 +27,7 @@ app.register_blueprint(chat_bp)
 
 @login_manager.user_loader
 def load_user(user_id):
-    from app.funcoes.modelos import ADMIN_EMAIL
-    if user_id == 'admin':
-        return Usuario('admin', 'Administrador', ADMIN_EMAIL, is_admin=True)
     u = usuarios_col.find_one({'_id': ObjectId(user_id)})
     if u:
-        return Usuario(str(u['_id']), u['nome'], u['email'])
+        return Usuario(str(u['_id']), u['nome'], u['email'], u.get('is_admin', False))
     return None

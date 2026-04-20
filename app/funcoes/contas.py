@@ -2,12 +2,12 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import usuarios_col
-from app.funcoes.modelos import Usuario, ADMIN_EMAIL, ADMIN_SENHA
+from app.funcoes.modelos import Usuario
 
 contas_bp = Blueprint('contas', __name__)
 
 @contas_bp.route('/')
-@ contas_bp.route('/index')
+@contas_bp.route('/index')
 def index():
     return render_template('index.html')
 
@@ -16,13 +16,14 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         senha = request.form.get('senha')
-        if email == ADMIN_EMAIL and senha == ADMIN_SENHA:
-            login_user(Usuario('admin', 'Administrador', ADMIN_EMAIL, is_admin=True))
-            return redirect(url_for('admin.catalogo'))
+
         u = usuarios_col.find_one({'email': email})
         if u and check_password_hash(u['senha'], senha):
-            login_user(Usuario(str(u['_id']), u['nome'], u['email']))
+            login_user(Usuario(str(u['_id']), u['nome'], u['email'], u.get('is_admin', False)))
+            if u.get('is_admin'):
+                return redirect(url_for('admin.catalogo'))
             return redirect(url_for('loja.loja'))
+
         flash('Email ou senha incorretos.')
     return render_template('login.html')
 
@@ -38,10 +39,11 @@ def cadastro():
         usuarios_col.insert_one({
             'nome': nome,
             'email': email,
-            'senha': generate_password_hash(senha)
+            'senha': generate_password_hash(senha),
+            'is_admin': False
         })
         flash('Cadastro realizado! Faça login.')
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('contas.login'))
     return render_template('cadastro.html')
 
 @contas_bp.route('/logout')
