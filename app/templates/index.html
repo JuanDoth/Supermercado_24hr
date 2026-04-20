@@ -31,12 +31,10 @@
     </div>
 </div>
 
-<!-- Botão flutuante -->
 <button class="chat-btn" onclick="abrirChat()">
     <i class="fa-solid fa-comment"></i>
 </button>
 
-<!-- Janela do chat -->
 <div class="chat-box" id="chatBox">
     <div class="chat-header">
         <span>🛒 Assistente Boa Vida</span>
@@ -77,12 +75,14 @@ async function enviarMensagem() {
         });
 
         if (!res.ok) {
-            const erro = await res.text();
-            console.log('Erro do servidor:', erro);
-            const msgsErro = mensagens.querySelectorAll('.msg-ia');
-            msgsErro[msgsErro.length - 1].textContent = 'Erro ao conectar com a IA.';
-            return;
-        }
+    const msgsErro = mensagens.querySelectorAll('.msg-ia');
+    if (res.status === 401) {
+        msgsErro[msgsErro.length - 1].textContent = 'Faça login para continuar conversando! 😊';
+    } else {
+        msgsErro[msgsErro.length - 1].textContent = 'Erro ao conectar com a IA.';
+    }
+    return;
+}
 
         const data = await res.json();
         const msgs = mensagens.querySelectorAll('.msg-ia');

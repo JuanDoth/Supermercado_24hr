@@ -13,14 +13,14 @@ pedidos_col = db['pedidos']
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'contas.login'
 
 
-from app.funcoes import auth_bp, loja_bp, admin_bp, chat_bp
+from app.funcoes import contas_bp, loja_bp, admin_bp, chat_bp
 from app.funcoes.modelos import Usuario
 from bson import ObjectId
 
-app.register_blueprint(auth_bp)
+app.register_blueprint(contas_bp)
 app.register_blueprint(loja_bp)
 app.register_blueprint(admin_bp)
 app.register_blueprint(chat_bp)

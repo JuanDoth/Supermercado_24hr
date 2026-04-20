@@ -4,14 +4,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import usuarios_col
 from app.funcoes.modelos import Usuario, ADMIN_EMAIL, ADMIN_SENHA
 
-auth_bp = Blueprint('auth', __name__)
+contas_bp = Blueprint('contas', __name__)
 
-@auth_bp.route('/')
-@auth_bp.route('/index')
+@contas_bp.route('/')
+@ contas_bp.route('/index')
 def index():
     return render_template('index.html')
 
-@auth_bp.route('/login', methods=['GET', 'POST'])
+@contas_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -26,7 +26,7 @@ def login():
         flash('Email ou senha incorretos.')
     return render_template('login.html')
 
-@auth_bp.route('/cadastro', methods=['GET', 'POST'])
+@contas_bp.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
         nome = request.form.get('nome')
@@ -44,8 +44,8 @@ def cadastro():
         return redirect(url_for('auth.login'))
     return render_template('cadastro.html')
 
-@auth_bp.route('/logout')
+@contas_bp.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('auth.index'))
+    return redirect(url_for('contas.index'))
