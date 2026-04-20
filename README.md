@@ -193,6 +193,6 @@ O assistente virtual:
 
 ---
 
-**Desenvolvido por:** Juand  
+**Desenvolvido por:** Juan doth  
 **Última atualização:** 15 de abril de 2026  
 **Status:** 🚧 Em desenvolvimento
