@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --verde: #1a6b3a;
+  --verde-claro: #2d9e58;
+  --verde-suave: #e8f5ee;
+  --verde-borda: #b7dfca;
+  --branco: #fafaf8;
+  --cinza: #f4f4f2;
+  --texto: #1c2b22;
+  --texto-suave: #5a7263;
+  --vermelho: #c0392b;
+  --vermelho-suave: #fdecea;
+  --sombra: 0 2px 16px rgba(26,107,58,0.08);
+  --raio: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: var(--branco);
+  color: var(--texto);
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--verde);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 64px;
+  box-shadow: 0 2px 12px rgba(26,107,58,0.18);
+}
+
+nav::before {
+  content: '🛒';
+  font-size: 22px;
+  margin-right: 12px;
+}
+
+nav a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.nav-logout {
+  margin-left: auto;
+}
+
+.container {
+  max-width: 860px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--verde);
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+  margin-top: 36px;
+}
+
+p {
+  color: var(--texto-suave);
+  line-height: 1.7;
+  font-size: 16px;
+}

@@ -1,0 +1,122 @@
+.form-card {
+  background: var(--verde-suave);
+  border: 1px solid var(--verde-borda);
+  border-radius: var(--raio);
+  padding: 28px;
+  margin-bottom: 40px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 180px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--verde);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--verde-borda);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  background: #fff;
+  color: var(--texto);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--verde-claro);
+  box-shadow: 0 0 0 3px rgba(45,158,88,0.12);
+}
+
+input::placeholder {
+  color: #b0bdb5;
+}
+
+/* ── BOTÕES ── */
+.btn-adicionar {
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-adicionar:hover {
+  background: var(--verde-claro);
+  transform: translateY(-1px);
+}
+
+.btn-adicionar:active {
+  transform: translateY(0);
+}
+
+.btn-remover {
+  background: var(--vermelho-suave);
+  color: var(--vermelho);
+  border: 1px solid #f5c6c2;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-remover:hover {
+  background: var(--vermelho);
+  color: #fff;
+  border-color: var(--vermelho);
+}
+
+.btn-cancelar {
+  background: #f4f4f2;
+  color: #5a7263;
+  border: 1px solid #ddd;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-cancelar:hover {
+  background: #e8e8e6;
+}

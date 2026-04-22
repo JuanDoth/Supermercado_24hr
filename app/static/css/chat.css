@@ -1,0 +1,128 @@
+.chat-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(26,107,58,0.35);
+  transition: background 0.2s, transform 0.2s;
+  z-index: 999;
+}
+
+.chat-btn:hover {
+  background: var(--verde-claro);
+  transform: scale(1.08);
+}
+
+.chat-box {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 340px;
+  height: 460px;
+  background: #fff;
+  border: 1px solid var(--verde-borda);
+  border-radius: var(--raio);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  z-index: 999;
+  overflow: hidden;
+}
+
+.chat-header {
+  background: var(--verde);
+  color: #fff;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.chat-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.chat-header button:hover {
+  opacity: 1;
+}
+
+.chat-mensagens {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.msg-ia {
+  background: var(--verde-suave);
+  color: var(--texto);
+  padding: 10px 14px;
+  border-radius: 12px 12px 12px 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 85%;
+  align-self: flex-start;
+}
+
+.msg-usuario {
+  background: var(--verde);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 12px 12px 4px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 85%;
+  align-self: flex-end;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--cinza);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1.5px solid var(--verde-borda);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: var(--verde-claro);
+}
+
+.chat-input button {
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.chat-input button:hover {
+  background: var(--verde-claro);
+}

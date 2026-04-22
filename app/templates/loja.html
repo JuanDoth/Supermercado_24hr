@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/loja.css') }}">
+{% endblock %}
 {% block html %}
 
 <h1>Nossa Loja</h1>
