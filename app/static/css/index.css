@@ -4,9 +4,6 @@
   padding: 56px 48px;
   color: #fff;
   margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .hero h1 {
@@ -21,15 +18,6 @@
   font-size: 17px;
   max-width: 480px;
   line-height: 1.7;
-}
-
-.hero-texto {
-  flex: 1;
-}
-
-.hero-imagem {
-  font-size: 100px;
-  margin-left: 40px;
 }
 
 .hero-links {
@@ -99,4 +87,20 @@
 
 .beneficio-card p {
   font-size: 14px;
+}
+
+/* ── HERO ── */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-texto {
+  flex: 1;
+}
+
+.hero-imagem {
+  font-size: 100px;
+  margin-left: 40px;
 }

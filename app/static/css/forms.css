@@ -29,7 +29,8 @@
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+input[type="password"] {
   width: 100%;
   padding: 12px 14px;
   border: 1.5px solid var(--verde-borda);
@@ -51,7 +52,6 @@ input::placeholder {
   color: #b0bdb5;
 }
 
-/* ── BOTÕES ── */
 .btn-adicionar {
   background: var(--verde);
   color: #fff;

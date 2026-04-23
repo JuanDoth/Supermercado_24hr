@@ -2,6 +2,7 @@
 {% block styles %}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/contas.css') }}">
 {% endblock %}
 {% block html %}
 
@@ -45,10 +46,10 @@
                 <td>R$ {{ "%.2f"|format(produto.preco) }}</td>
                 <td class="acoes">
                     <a href="/editar/{{ produto._id }}" class="btn-editar">
-                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                     </a>
                     <form action="/deletar/{{ produto._id }}" method="POST" style="display:inline;">
-                        <button type="submit" class="btn-remover-icone">
+                        <button type="submit" class="btn-remover-icone" onclick="return confirm('Tem certeza que deseja deletar este produto?')">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </form>
